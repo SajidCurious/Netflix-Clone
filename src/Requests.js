@@ -13,5 +13,3 @@ const requests = {
 };
 
 export default requests;
-
-let hyd = [];
