@@ -7,12 +7,10 @@ function App() {
   return (
     <>
       <AuthContextProvider>
-        <BrowserRouter>
-          <Navbar />
-          <Routes>
-            <Route path="/" element={<Home />} />
-          </Routes>
-        </BrowserRouter>
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<Home />} />
+        </Routes>
       </AuthContextProvider>
     </>
   );
