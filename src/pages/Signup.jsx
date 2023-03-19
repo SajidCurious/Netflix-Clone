@@ -1,16 +1,16 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import { UserAuth } from "../context/AuthContext";
 
 const Signup = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const { user, SignUp } = UserAuth();
+  const { user, signUp } = UserAuth();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await SignUp(email, password);
+      await signUp(email, password);
     } catch (error) {
       console.log(error);
     }
