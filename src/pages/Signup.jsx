@@ -1,7 +1,21 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { UserAuth } from "../context/AuthContext";
 
 const Signup = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const { user, SignUp } = UserAuth();
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      await SignUp(email, password);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <>
       <div className="w-full h-screen">
@@ -15,14 +29,20 @@ const Signup = () => {
           <div className="max-w-[450px] h-[600px] mx-auto bg-black/75 text-white">
             <div className="max-w-[320px] mx-auto py-16">
               <h1 className="text-3xl font-bold">Sign Up</h1>
-              <form className="w-full flex flex-col py-4 " action="">
+              <form
+                onSubmit={handleSubmit}
+                className="w-full flex flex-col py-4 "
+                action=""
+              >
                 <input
+                  onChange={(e) => setEmail(e.target.value)}
                   className="p-3 my-2 bg-gray-700 rounded"
                   type="email"
                   placeholder="Email"
                   autoComplete="email"
                 />
                 <input
+                  onChange={(e) => setPassword(e.target.value)}
                   className="p-3 my-2 bg-gray-700 rounded"
                   type="password"
                   placeholder="Password"
